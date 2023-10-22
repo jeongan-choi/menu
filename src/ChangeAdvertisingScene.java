@@ -1,0 +1,35 @@
+import java.awt.Dimension;
+import java.awt.Graphics;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class ChangeAdvertisingScene extends Thread{
+	
+	JLabel advertisingScene; // ±¤°íÀÌ¹ÌÁö ¹Ù²Ù´Â ¾À
+	boolean running = true;
+	
+	public ChangeAdvertisingScene(JLabel advertisingScene){
+		this.advertisingScene = advertisingScene;
+	}
+	
+	@Override
+	public synchronized void run() {
+		while (running) {
+			try {
+				
+				advertisingScene.setIcon(new ImageIcon("./otherimages/´õºíx2¹ö°Å±¤°í.jpg"));
+				sleep(5000);
+				
+				advertisingScene.setIcon(new ImageIcon("./otherimages/ÂøÇÑÁ¡½É±¤°í.png"));
+				sleep(5000);
+				
+				advertisingScene.setIcon(new ImageIcon("./otherimages/ÁöÆÄÀÌ±¤°í.jpg"));
+				sleep(5000);
+				
+			} catch (InterruptedException e) {
+				running = false;
+			}
+		}
+	}
+}
